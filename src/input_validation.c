@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:49:10 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 20:29:18 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:31:51 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,5 @@ void	check_input(char	**args, int ac, t_program_data *pd)
 	{
 		is_valid_and_push(args[i], pd);
 		i--;
-	}
-	if (!pd->valid_input)
-		return ;
-	else
-	{
-		ft_putstr("valid input\n");
-		print_stack(pd->stack_a);
 	}
 }

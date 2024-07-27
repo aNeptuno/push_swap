@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 15:55:21 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 21:42:24 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_node
 {
 	int				data;
 	struct s_node	*next;
+    struct s_node	*prev;
 }	t_node;
 
 // Stack definition
@@ -48,7 +49,7 @@ long	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
 
 // Free
-void free_data(t_program_data *prog_data);
+void    free_data(t_program_data *prog_data);
 
 // Input validation
 void	check_input(char	**args, int ac, t_program_data *pd);
@@ -57,6 +58,19 @@ void	check_input(char	**args, int ac, t_program_data *pd);
 void	push(t_stack* stack, int data);
 
 // Helper functions || temporal
-void print_stack(t_stack *s);
+void	print_stack(t_stack *s);
+
+// Commands
+void	pa(t_program_data *pd);
+void	pb(t_program_data *pd);
+void	sa(t_program_data *pd);
+void	sb(t_program_data *pd);
+void	ss(t_program_data *pd);
+void	ra(t_program_data *pd);
+void	rb(t_program_data *pd);
+void	rr(t_program_data *pd);
+void	rra(t_program_data *pd);
+void	rrb(t_program_data *pd);
+void	rrr(t_program_data *pd);
 
 #endif

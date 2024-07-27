@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 20:27:17 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:52:07 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,23 @@ int	main(int ac, char	**av)
 	char			**args;
 	t_program_data	prog_data;
 
-	if (ac > 1)
+	if (ac == 1)
+		return (0);
+	init_program_data(&prog_data);
+	if (ac == 2 && ft_strchr(av[1], ' ') != NULL)
 	{
-		init_program_data(&prog_data);
-		if (ac == 2 && ft_strchr(av[1], ' ') != NULL)
-		{
-			prog_data.input_is_string = 1;
-			args = ft_split(av[1], ' ');
-			check_input(args, ac, &prog_data);
-			free (args);
-		}
-		else
-			check_input(av, ac, &prog_data);
-		free_data(&prog_data);
+		prog_data.input_is_string = 1;
+		args = ft_split(av[1], ' ');
+		check_input(args, ac, &prog_data);
+		free (args);
 	}
+	else
+		check_input(av, ac, &prog_data);
+	if (prog_data.valid_input)
+	{
+		ft_putstr("valid input\n");
+		print_stack(prog_data.stack_a);
+	}
+	free_data(&prog_data);
 	return (0);
 }
