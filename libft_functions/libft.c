@@ -6,11 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:26:36 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 20:03:43 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:29:04 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "push_swap.h"
 
 int	ft_strlen(const char *str)
 {

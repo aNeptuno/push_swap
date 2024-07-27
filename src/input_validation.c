@@ -6,11 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:49:10 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 15:54:07 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:29:18 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "push_swap.h"
 
 static int	is_number(char *arg)
 {
