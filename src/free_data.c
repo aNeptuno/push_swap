@@ -6,11 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:50:31 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 20:21:11 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:27:30 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "push_swap.h"
 
 static void	free_stack(t_stack *stack)
 {
