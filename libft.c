@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:26:36 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/26 17:26:36 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 14:05:34 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,17 @@ void	ft_putstr(char *s)
 int	ft_isdigit(int c)
 {
 	return (c <= '9' && c >= '0');
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
