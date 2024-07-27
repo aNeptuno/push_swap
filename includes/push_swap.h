@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 21:42:24 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 22:05:14 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_node
 {
 	int				data;
 	struct s_node	*next;
-    struct s_node	*prev;
+	struct s_node	*prev;
 }	t_node;
 
 // Stack definition
@@ -34,11 +34,11 @@ typedef struct s_stack
 
 typedef struct s_program_data
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
-    int     valid_input;
-    int     input_is_string;
-}   t_program_data;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		valid_input;
+	int		input_is_string;
+}	t_program_data;
 
 // Libft functions
 int		ft_isdigit(int c);
@@ -49,13 +49,13 @@ long	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
 
 // Free
-void    free_data(t_program_data *prog_data);
+void	free_data(t_program_data *prog_data);
 
 // Input validation
 void	check_input(char	**args, int ac, t_program_data *pd);
 
 // Stack operations
-void	push(t_stack* stack, int data);
+void	push(t_stack *stack, int data);
 
 // Helper functions || temporal
 void	print_stack(t_stack *s);

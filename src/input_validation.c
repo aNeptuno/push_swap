@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:49:10 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 20:31:51 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/27 22:03:39 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_number(char *arg)
 		i++;
 	}
 	if (i == 1 && arg[0] == '-')
-        return (0);
+		return (0);
 	return (1);
 }
 
@@ -43,7 +43,7 @@ static int	already_on_stack(int num, t_stack *s)
 			return (1);
 		current = current->next;
 	}
-	return (0); 
+	return (0);
 }
 
 static void	is_valid_and_push(char	*arg, t_program_data *pd)
@@ -61,22 +61,15 @@ static void	is_valid_and_push(char	*arg, t_program_data *pd)
 				pd->valid_input = 1;
 			}
 			else
-			{
-				ft_putstr("Error\n");
 				pd->valid_input = 0;
-			}
 		}
 		else
-		{
-			ft_putstr("Error\n");
 			pd->valid_input = 0;
-		}
 	}
 	else
-	{
-		ft_putstr("Error\n");
 		pd->valid_input = 0;
-	}
+	if (!pd->valid_input)
+		ft_putstr("Error\n");
 }
 
 static int	args_size(char **args)
