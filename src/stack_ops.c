@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:52:37 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 22:03:12 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/28 12:27:02 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	push(t_stack *stack, int data)
 	if (stack->top != NULL)
 		stack->top->prev = new_node;
 	stack->top = new_node;
+	stack->size++;
 }
 
 void	pop_first(t_stack *stack)
@@ -38,5 +39,5 @@ void	pop_first(t_stack *stack)
 	if (stack->top != NULL)
 		stack->top->prev = NULL;
 	free(top_node);
-	return ;
+	stack->size--;
 }

@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 22:01:32 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/28 13:13:06 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_program_data(t_program_data *prog_data)
 		return ;
 	prog_data->stack_a->top = NULL;
 	prog_data->stack_b->top = NULL;
+	prog_data->stack_a->size = 0;
+	prog_data->stack_b->size = 0;
 	prog_data->valid_input = 1;
 	prog_data->input_is_string = 0;
 }
@@ -44,7 +46,10 @@ int	main(int ac, char	**av)
 	if (prog_data.valid_input)
 	{
 		ft_putstr("valid input\n");
-		print_stack(prog_data.stack_a);
+		print_stack(prog_data.stack_a, 'a');
+		sort(prog_data.stack_a, prog_data.stack_b, &prog_data);
+		print_stack(prog_data.stack_a, 'a');
+		print_stack(prog_data.stack_b, 'b');
 	}
 	free_data(&prog_data);
 	return (0);
