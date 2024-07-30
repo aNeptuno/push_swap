@@ -6,12 +6,15 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:52:37 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/28 12:27:02 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:37:09 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief Add node to stack
+/// @param stack stack to add new node
+/// @param data data to the new node
 void	push(t_stack *stack, int data)
 {
 	t_node	*new_node;

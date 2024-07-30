@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/30 06:11:10 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:13:42 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_node
 	int				data;
 	struct s_node	*next;
 	struct s_node	*prev;
+	struct s_node	*target;
+	int				index;
+	int				push_cost;
+	int				cheapest;
 }	t_node;
 
 // Stack definition
@@ -31,6 +35,7 @@ typedef struct s_stack
 {
 	t_node	*top;
 	int		size;
+	int		median;
 }	t_stack;
 
 typedef struct s_program_data
@@ -78,7 +83,11 @@ void	rrb(t_program_data *pd);
 void	rrr(t_program_data *pd);
 
 // Algorithm
+t_node	*find_biggest(t_stack *stack);
 void	small_sort(t_stack *stack_a, t_program_data *pd);
 void	sort(t_stack *stack_a, t_stack *stack_b, t_program_data *pd);
+void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd);
+void	set_indexes(t_stack *stack);
+void	set_initial_data(t_stack *stack_a, t_stack *stack_b);
 
 #endif

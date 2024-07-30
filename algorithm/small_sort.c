@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:28:21 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/30 06:03:41 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:14:08 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	sort_two(t_stack *stack_a, t_program_data *pd)
 		sa(pd);
 }
 
-static t_node	*find_biggest(t_stack *stack)
+t_node	*find_biggest(t_stack *stack)
 {
 	t_node	*biggest;
-    t_node	*current;
+	t_node	*current;
 
 	biggest = stack->top;
-    current = stack->top->next;
+	current = stack->top->next;
 	while (current)
 	{
 		if (data_compare(current, biggest) > 0)

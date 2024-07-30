@@ -6,7 +6,7 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/07/28 12:54:04 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/07/30 15:22:54 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRC_FILES = $(LIBFT_DIR)/ft_split.c \
 			$(COMM_DIR)/swap.c  \
 			$(ALGO_DIR)/sort.c  \
 			$(ALGO_DIR)/small_sort.c  \
+			$(ALGO_DIR)/push_swap.c  \
+			$(ALGO_DIR)/set_initial_data.c  \
 
 # OBJECT FILES
 OBJS = $(SRC_FILES:.c=.o)
