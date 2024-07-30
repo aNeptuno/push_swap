@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:50:31 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 21:58:57 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 06:11:06 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ static void	free_stack(t_stack *stack)
 	t_node	*current;
 	t_node	*next;
 
-	current = malloc(sizeof(t_node));
-	if (current == NULL)
-		return ;
 	current = stack->top;
 	while (current)
 	{
@@ -37,3 +34,19 @@ void	free_data(t_program_data *prog_data)
 	free(prog_data->stack_a);
 	free(prog_data->stack_b);
 }
+
+void	free_args(char **args)
+{
+	int	i;
+
+	if (args == NULL)
+		return ;
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+

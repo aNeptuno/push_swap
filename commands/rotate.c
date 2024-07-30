@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 20:04:26 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 21:55:17 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 05:44:42 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	rotate(t_stack *stack)
 	first->next = NULL;
 	first->prev = last;
 }
-
+/// @brief First element -> Last element
 void	ra(t_program_data *pd)
 {
 	if (pd->stack_a->top == NULL)
@@ -50,6 +50,7 @@ void	ra(t_program_data *pd)
 	ft_putstr("ra\n");
 }
 
+/// @brief Last element -> First element
 void	rb(t_program_data *pd)
 {
 	if (pd->stack_b->top == NULL)

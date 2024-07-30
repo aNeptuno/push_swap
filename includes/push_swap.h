@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/28 13:12:47 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 06:11:10 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_strchr(const char *s, int c);
 
 // Free
 void	free_data(t_program_data *prog_data);
+void	free_args(char **args);
 
 // Input validation
 void	check_input(char	**args, int ac, t_program_data *pd);

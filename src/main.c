@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/28 13:13:06 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/30 06:10:43 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char	**av)
 		prog_data.input_is_string = 1;
 		args = ft_split(av[1], ' ');
 		check_input(args, ac, &prog_data);
-		free (args);
+		free_args(args);
 	}
 	else
 		check_input(av, ac, &prog_data);
