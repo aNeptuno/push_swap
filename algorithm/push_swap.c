@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:07:22 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 16:48:26 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:26:37 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,27 @@ static void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 
 static void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 {
-	while (stack_a->top != stack_b->top->target)
+	int	rep;
+
+	rep = 0;
+	if (stack_a->top != stack_b->top->target)
 	{
 		if (stack_a->top->index >= stack_a->median)
-			ra(pd);
+		{
+			while (rep < stack_a->top->index)
+			{
+				ra(pd);
+				rep++;
+			}
+		}
 		else
-			rra(pd);
+		{
+			while (rep < stack_a->size - 1 - stack_a->top->index)
+			{
+				rra(pd);
+				rep++;
+			}
+		}
 	}
 	pa(pd, 1);
 }
@@ -79,19 +94,19 @@ static void	min_on_top(t_stack *a, t_program_data *pd)
 void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 {
 	if (stack_a->size >= 5)
-		pa(pd, 2);
+		pb(pd, 2);
 	else
-		pa(pd, 1);
+		pb(pd, 1);
 	while (stack_a->size > 3)
 	{
 		set_initial_data(stack_a, stack_b, 1);
 		push_to_b(stack_a, stack_b, pd);
 	}
 	small_sort(stack_a, pd);
-	while (stack_b->size > 0)
+	/* while (stack_b->size > 0)
 	{
 		set_initial_data(stack_a, stack_b, 0);
 		push_to_a(stack_a, stack_b, pd);
-	}
+	} */
 	min_on_top(stack_a, pd);
 }

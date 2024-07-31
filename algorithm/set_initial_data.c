@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:20:23 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 16:24:52 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:24:50 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	set_a_targets(t_node *node, t_stack *stack)
 	}
 }
 
-static int	set_push_cost_target(t_node *node_b, t_stack *stack_b)
+static int	get_push_cost_target(t_node *node_b, t_stack *stack_b)
 {
 	int		push_cost;
 
@@ -65,7 +65,7 @@ static void	set_push_cost(t_stack *stack_a, t_stack *stack_b)
 			current->push_cost = current->index;
 		else
 			current->push_cost = stack_a->size - 1 - current->index;
-		current->push_cost += set_push_cost_target(stack_b->top, stack_b);
+		current->push_cost += get_push_cost_target(current->target, stack_b);
 		current = current->next;
 	}
 }
@@ -81,14 +81,14 @@ static void	set_cheapest(t_node *node)
 	min_node = node;
 	min_cost = min_node->push_cost;
 	min_node->cheapest = 1;
-	current = node;
+	current = min_node->next;
 	while (current)
 	{
 		current->cheapest = 0;
 		if (current->push_cost < min_cost)
 		{
-			current->cheapest = 1;
 			min_node->cheapest = 0;
+			current->cheapest = 1;
 			min_node = current;
 		}
 		current = current->next;

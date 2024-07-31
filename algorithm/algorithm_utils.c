@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:42:30 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 16:51:11 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:35:27 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	data_compare(t_node *node_n, t_node *node_m)
 	int	n;
 	int	m;
 
+	if (!node_m)
+		return (1);
 	n = node_n->data;
 	m = node_m->data;
 	if (n > m)

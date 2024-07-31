@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 16:53:38 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:27:33 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main(int ac, char	**av)
 		check_input(av, ac, &prog_data);
 	if (prog_data.valid_input)
 	{
-		ft_putstr("valid input\n");
 		print_stack(prog_data.stack_a, 'a');
 		if (!is_stack_sorted(prog_data.stack_a))
 		{
