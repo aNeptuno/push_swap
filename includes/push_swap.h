@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/30 16:13:42 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:53:51 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,6 @@ void	check_input(char	**args, int ac, t_program_data *pd);
 void	push(t_stack *stack, int data);
 void	pop_first(t_stack *stack);
 
-// Helper functions || temporal
-void	print_stack(t_stack *s, char ch);
-int		data_compare(t_node *node_n, t_node *node_m);
-
 // Commands
 void	pa(t_program_data *pd, int repeat);
 void	pb(t_program_data *pd, int repeat);
@@ -82,12 +78,18 @@ void	rra(t_program_data *pd);
 void	rrb(t_program_data *pd);
 void	rrr(t_program_data *pd);
 
+// Algorithm utils
+void	print_stack(t_stack *s, char ch);
+int		data_compare(t_node *node_n, t_node *node_m);
+int		is_stack_sorted(t_stack *stack);
+
 // Algorithm
 t_node	*find_biggest(t_stack *stack);
+t_node	*find_smallest(t_stack *stack);
 void	small_sort(t_stack *stack_a, t_program_data *pd);
-void	sort(t_stack *stack_a, t_stack *stack_b, t_program_data *pd);
 void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd);
 void	set_indexes(t_stack *stack);
-void	set_initial_data(t_stack *stack_a, t_stack *stack_b);
+void	set_b_targets(t_node *node, t_stack *stack);
+void	set_initial_data(t_stack *stack_a, t_stack *stack_b, int a);
 
 #endif

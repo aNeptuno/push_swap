@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/30 06:10:43 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:53:38 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ int	main(int ac, char	**av)
 	{
 		ft_putstr("valid input\n");
 		print_stack(prog_data.stack_a, 'a');
-		sort(prog_data.stack_a, prog_data.stack_b, &prog_data);
+		if (!is_stack_sorted(prog_data.stack_a))
+		{
+			if (prog_data.stack_a->size <= 3)
+				small_sort(prog_data.stack_a, &prog_data);
+			else
+				push_swap(prog_data.stack_a, prog_data.stack_b, &prog_data);
+		}
 		print_stack(prog_data.stack_a, 'a');
 		print_stack(prog_data.stack_b, 'b');
 	}

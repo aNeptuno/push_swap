@@ -6,26 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:07:22 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/30 16:14:39 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:48:26 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	set_indexes(t_stack *stack)
-{
-	t_node	*current;
-	int		i;
-
-	current = stack->top;
-	i = 0;
-	while (current)
-	{
-		current->index = i;
-		i++;
-		current = current->next;
-	}
-}
 
 static t_node	*get_cheapest_node(t_node *node)
 {
@@ -65,6 +50,32 @@ static void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 	pb(pd, 1);
 }
 
+static void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
+{
+	while (stack_a->top != stack_b->top->target)
+	{
+		if (stack_a->top->index >= stack_a->median)
+			ra(pd);
+		else
+			rra(pd);
+	}
+	pa(pd, 1);
+}
+
+static void	min_on_top(t_stack *a, t_program_data *pd)
+{
+	t_node	*min;
+
+	min = find_smallest(a);
+	while (a->top != min)
+	{
+		if (min->index < a->median)
+			rra(pd);
+		else
+			ra(pd);
+	}
+}
+
 void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 {
 	if (stack_a->size >= 5)
@@ -73,10 +84,14 @@ void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 		pa(pd, 1);
 	while (stack_a->size > 3)
 	{
-		set_initial_data(stack_a, stack_b);
+		set_initial_data(stack_a, stack_b, 1);
 		push_to_b(stack_a, stack_b, pd);
 	}
 	small_sort(stack_a, pd);
-	// push back into a
-	// min on top (a)
+	while (stack_b->size > 0)
+	{
+		set_initial_data(stack_a, stack_b, 0);
+		push_to_a(stack_a, stack_b, pd);
+	}
+	min_on_top(stack_a, pd);
 }
