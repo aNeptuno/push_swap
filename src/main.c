@@ -6,11 +6,27 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 10:17:20 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:27:46 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_stack_sorted(t_stack *stack)
+{
+	t_node	*current;
+	int		is_sorted;
+
+	is_sorted = 1;
+	current = stack->top;
+	while (current && is_sorted)
+	{
+		if (current->data < current->next->data)
+			is_sorted = 0;
+		current = current->next;
+	}
+	return (is_sorted);
+}
 
 void	init_program_data(t_program_data *prog_data)
 {
@@ -45,7 +61,7 @@ int	main(int ac, char	**av)
 		check_input(av, ac, &prog_data);
 	if (prog_data.valid_input)
 	{
-		print_stack(prog_data.stack_a, 'a');
+		//print_stack(prog_data.stack_a, 'a');
 		if (!is_stack_sorted(prog_data.stack_a))
 		{
 			if (prog_data.stack_a->size <= 3)
@@ -53,8 +69,8 @@ int	main(int ac, char	**av)
 			else
 				push_swap(prog_data.stack_a, prog_data.stack_b, &prog_data);
 		}
-		print_stack(prog_data.stack_a, 'a');
-		print_stack(prog_data.stack_b, 'b');
+		/* print_stack(prog_data.stack_a, 'a');
+		print_stack(prog_data.stack_b, 'b'); */
 	}
 	free_data(&prog_data);
 	return (0);

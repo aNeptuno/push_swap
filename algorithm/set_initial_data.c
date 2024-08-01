@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:20:23 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 11:47:37 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:26:37 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,32 @@ static void	set_a_targets(t_node *node, t_stack *stack)
 	current_b = stack->top;
 	while (current_a)
 	{
+		//printf("current a: %d\n",current_a->data);
+		current_b = stack->top;
 		while (current_b)
 		{
-			if (data_compare(current_b, current_a) < 0)
+			//printf("--> current_b->data = %d\n", current_b->data);
+			if (current_b->data < current_a->data)
 			{
-				if (!current_a->target)
+				if (current_a->target == NULL)
+				{
+					//printf("--> current a no tiene target, le asigno el valor de current b\n");
 					current_a->target = current_b;
-				else if (data_compare(current_b, current_a->target) > 0)
+				}
+				else if (current_b->data > current_a->target->data)
+				{
+					//printf("entro a elseif: hay target, pero mi nuevo valor es mayor que el target (y menor que current a)\n");
 					current_a->target = current_b;
+				}
 			}
 			current_b = current_b->next;
 		}
-		if (!current_a->target)
+		if (current_a->target == NULL)
+		{
+			//printf("entra a no target dsp de while\n");
 			current_a->target = find_biggest(stack);
+		}
+		//printf("a node: %d | target b node: %d\n", current_a->data, current_a->target->data);
 		current_a = current_a->next;
 	}
 }
@@ -82,7 +95,7 @@ static void	set_cheapest(t_node *node)
 	min_cost = min_node->push_cost;
 	min_node->cheapest = 1;
 	current = min_node->next;
-	if (!current)
+	if (current == NULL)
 		return ;
 	while (current)
 	{
@@ -103,8 +116,8 @@ void	set_initial_data(t_stack *stack_a, t_stack *stack_b, int a)
 {
 	stack_a->median = stack_a->size / 2;
 	stack_b->median = stack_b->size / 2;
-	set_indexes(stack_a);
-	set_indexes(stack_b);
+	set_indexes(stack_a, 1);
+	set_indexes(stack_b, 1);
 	if (a)
 	{
 		set_a_targets(stack_a->top, stack_b);
@@ -112,8 +125,5 @@ void	set_initial_data(t_stack *stack_a, t_stack *stack_b, int a)
 		set_cheapest(stack_a->top);
 	}
 	else
-	{
-		set_indexes(stack_b);
 		set_b_targets(stack_b->top, stack_a);
-	}
 }

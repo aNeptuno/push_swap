@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:07:22 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 12:02:17 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:21:19 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,14 @@ static void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 	t_node	*cheapest;
 
 	cheapest = get_cheapest_node(stack_a->top);
-	if (cheapest->index >= stack_a->median
-		&& cheapest->target->index >= stack_b->median)
-		while (stack_a->top != cheapest || stack_b->top != cheapest->target)
-			rr(pd);
-	else if (cheapest->index < stack_a->median
-		&& cheapest->target->index < stack_b->median)
-		while (stack_a->top != cheapest || stack_b->top != cheapest->target)
-			rrr(pd);
-	if (cheapest->index >= stack_a->median)
+	rr_or_rrr_reset_index(stack_a, stack_b, pd, cheapest);
+	if (cheapest->index <= stack_a->median)
 		while (stack_a->top != cheapest)
 			ra(pd);
 	else
 		while (stack_a->top != cheapest)
 			rra(pd);
-	if (cheapest->target->index >= stack_b->median)
+	if (cheapest->target->index <= stack_b->median)
 		while (stack_b->top != cheapest->target)
 			rb(pd);
 	else
@@ -57,7 +50,7 @@ static void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 	rep = 0;
 	if (stack_a->top != stack_b->top->target)
 	{
-		if (stack_a->top->index >= stack_a->median)
+		if (stack_a->top->index < stack_a->median)
 		{
 			while (rep < stack_a->top->index)
 			{
@@ -82,14 +75,14 @@ static void	min_on_top(t_stack *a, t_program_data *pd)
 	t_node	*min;
 
 	a->median = a->size / 2;
-	set_indexes(a);
+	set_indexes(a, 0);
 	min = find_smallest(a);
 	while (a->top != min)
 	{
-		if (min->index < a->median)
-			rra(pd);
-		else
+		if (min->index <= a->median)
 			ra(pd);
+		else
+			rra(pd);
 	}
 }
 

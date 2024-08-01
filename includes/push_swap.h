@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 11:47:46 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:53:21 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	rrr(t_program_data *pd);
 
 // Algorithm utils
 void	print_stack(t_stack *s, char ch);
-int		data_compare(t_node *node_n, t_node *node_m);
 int		is_stack_sorted(t_stack *stack);
 
 // Algorithm
@@ -88,8 +87,9 @@ t_node	*find_biggest(t_stack *stack);
 t_node	*find_smallest(t_stack *stack);
 void	small_sort(t_stack *stack_a, t_program_data *pd);
 void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd);
-void	set_indexes(t_stack *stack);
+void	set_indexes(t_stack *stack, int reset_target);
 void	set_b_targets(t_node *node, t_stack *stack);
 void	set_initial_data(t_stack *stack_a, t_stack *stack_b, int a);
+void	rr_or_rrr_reset_index(t_stack *stack_a, t_stack *stack_b, t_program_data *pd, t_node *cheapest);
 
 #endif

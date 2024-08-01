@@ -6,7 +6,7 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/08/01 12:02:40 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/01 12:18:52 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_FILES = $(LIBFT_DIR)/ft_split.c \
 			$(LIBFT_DIR)/ft_atoi.c \
 			$(SRC_DIR)/main.c \
 			$(SRC_DIR)/free_data.c \
-			$(SRC_DIR)/helpers.c \
+			$(SRC_DIR)/tmp.c \
 			$(SRC_DIR)/stack_ops.c \
 			$(SRC_DIR)/input_validation.c \
 			$(COMM_DIR)/push.c \
