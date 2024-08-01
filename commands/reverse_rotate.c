@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 20:04:35 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 21:54:37 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:35:02 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,21 @@ rrr rra y rrb al mismo tiempo. */
 
 static void	reverse_rotate(t_stack *stack)
 {
-	t_node	*first;
 	t_node	*last;
+    t_node	*second_last;
 
-	first = stack->top;
 	last = stack->top;
+	second_last = NULL;
 	while (last->next != NULL)
+	{
+		second_last = last;
 		last = last->next;
-	last->prev->next = NULL;
-	last->next = first;
+    }
+	second_last->next = NULL;
+	last->next = stack->top;
 	last->prev = NULL;
+	stack->top->prev = last;
 	stack->top = last;
-	first->prev = last;
 }
 
 void	rra(t_program_data *pd)

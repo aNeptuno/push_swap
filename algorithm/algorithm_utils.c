@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:42:30 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 17:35:27 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:52:40 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	set_indexes(t_stack *stack)
 	{
 		current->index = i;
 		i++;
+		if (current->target != NULL)
+			current->target = NULL;
 		current = current->next;
 	}
 }
@@ -81,28 +83,29 @@ t_node	*find_smallest(t_stack *stack)
 ///        If no smaller number found, target is smallest
 /// @param node top node from stack to set targets
 /// @param stack stack to target
-void	set_b_targets(t_node *node, t_stack *stack)
+void	set_b_targets(t_node *b_node, t_stack *stack_a)
 {
 	t_node	*current_a;
 	t_node	*current_b;
+	int		biggest;
 
-	current_a = node;
-	current_b = stack->top;
-	while (current_a)
+	current_b = b_node;
+	current_a = stack_a->top;
+	while (current_b)
 	{
-		while (current_b)
+		while (current_a)
 		{
-			if (data_compare(current_b, current_a) > 0)
+			if (data_compare(current_a, current_b) > 0)
 			{
-				if (!current_a->target)
-					current_a->target = current_b;
-				else if (data_compare(current_b, current_a->target) < 0)
-					current_a->target = current_b;
+				if (!current_b->target)
+					current_b->target = current_b;
+				else if (data_compare(current_a, current_b->target) > 0)
+					current_b->target = current_a;
 			}
-			current_b = current_b->next;
+			current_a = current_a->next;
 		}
-		if (!current_a->target)
-			current_a->target = find_smallest(stack);
-		current_a = current_a->next;
+		if (!current_b->target)
+			current_b->target = find_smallest(stack_a);
+		current_b = current_b->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:07:22 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 18:26:37 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:02:17 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,26 @@ static void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 	t_node	*cheapest;
 
 	cheapest = get_cheapest_node(stack_a->top);
+	if (cheapest->index >= stack_a->median
+		&& cheapest->target->index >= stack_b->median)
+		while (stack_a->top != cheapest || stack_b->top != cheapest->target)
+			rr(pd);
+	else if (cheapest->index < stack_a->median
+		&& cheapest->target->index < stack_b->median)
+		while (stack_a->top != cheapest || stack_b->top != cheapest->target)
+			rrr(pd);
 	if (cheapest->index >= stack_a->median)
-	{
 		while (stack_a->top != cheapest)
 			ra(pd);
-	}
 	else
-	{
 		while (stack_a->top != cheapest)
 			rra(pd);
-	}
 	if (cheapest->target->index >= stack_b->median)
-	{
 		while (stack_b->top != cheapest->target)
 			rb(pd);
-	}
 	else
-	{
 		while (stack_b->top != cheapest->target)
 			rrb(pd);
-	}
 	pb(pd, 1);
 }
 
@@ -67,7 +67,7 @@ static void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 		}
 		else
 		{
-			while (rep < stack_a->size - 1 - stack_a->top->index)
+			while (rep < stack_a->size - stack_a->top->index)
 			{
 				rra(pd);
 				rep++;
@@ -81,6 +81,8 @@ static void	min_on_top(t_stack *a, t_program_data *pd)
 {
 	t_node	*min;
 
+	a->median = a->size / 2;
+	set_indexes(a);
 	min = find_smallest(a);
 	while (a->top != min)
 	{
@@ -103,10 +105,10 @@ void	push_swap(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 		push_to_b(stack_a, stack_b, pd);
 	}
 	small_sort(stack_a, pd);
-	/* while (stack_b->size > 0)
+	while (stack_b->size > 0)
 	{
 		set_initial_data(stack_a, stack_b, 0);
 		push_to_a(stack_a, stack_b, pd);
-	} */
+	}
 	min_on_top(stack_a, pd);
 }

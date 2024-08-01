@@ -6,7 +6,7 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/07/31 17:29:55 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/01 12:02:40 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRC_FILES = $(LIBFT_DIR)/ft_split.c \
 			$(COMM_DIR)/reverse_rotate.c \
 			$(COMM_DIR)/rotate.c \
 			$(COMM_DIR)/swap.c  \
-			$(ALGO_DIR)/sort.c  \
 			$(ALGO_DIR)/small_sort.c  \
 			$(ALGO_DIR)/push_swap.c  \
 			$(ALGO_DIR)/set_initial_data.c  \

@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:20:23 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/31 18:24:50 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:47:37 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	get_push_cost_target(t_node *node_b, t_stack *stack_b)
 	if (node_b->index <= stack_b->median)
 		push_cost = node_b->index;
 	else
-		push_cost = stack_b->size - 1 - node_b->index;
+		push_cost = stack_b->size - node_b->index;
 	return (push_cost);
 }
 
@@ -64,7 +64,7 @@ static void	set_push_cost(t_stack *stack_a, t_stack *stack_b)
 		if (current->index <= stack_a->median)
 			current->push_cost = current->index;
 		else
-			current->push_cost = stack_a->size - 1 - current->index;
+			current->push_cost = stack_a->size - current->index;
 		current->push_cost += get_push_cost_target(current->target, stack_b);
 		current = current->next;
 	}
@@ -82,6 +82,8 @@ static void	set_cheapest(t_node *node)
 	min_cost = min_node->push_cost;
 	min_node->cheapest = 1;
 	current = min_node->next;
+	if (!current)
+		return ;
 	while (current)
 	{
 		current->cheapest = 0;
@@ -110,5 +112,8 @@ void	set_initial_data(t_stack *stack_a, t_stack *stack_b, int a)
 		set_cheapest(stack_a->top);
 	}
 	else
+	{
+		set_indexes(stack_b);
 		set_b_targets(stack_b->top, stack_a);
+	}
 }
