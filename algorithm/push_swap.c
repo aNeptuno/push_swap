@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:07:22 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 15:21:19 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:26:17 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,12 @@ static void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 
 static void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_program_data *pd)
 {
-	int	rep;
-
-	rep = 0;
-	if (stack_a->top != stack_b->top->target)
+	while (stack_a->top != stack_b->top->target)
 	{
-		if (stack_a->top->index < stack_a->median)
-		{
-			while (rep < stack_a->top->index)
-			{
-				ra(pd);
-				rep++;
-			}
-		}
+		if (stack_b->top->target->index <= stack_a->median)
+			ra(pd);
 		else
-		{
-			while (rep < stack_a->size - stack_a->top->index)
-			{
-				rra(pd);
-				rep++;
-			}
-		}
+			rra(pd);
 	}
 	pa(pd, 1);
 }
@@ -74,8 +59,8 @@ static void	min_on_top(t_stack *a, t_program_data *pd)
 {
 	t_node	*min;
 
-	a->median = a->size / 2;
 	set_indexes(a, 0);
+	a->median = a->size / 2;
 	min = find_smallest(a);
 	while (a->top != min)
 	{

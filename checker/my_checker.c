@@ -6,23 +6,17 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:10:17 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 12:12:40 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:38:36 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	main(int ac, char	**av)
 {
-	int i = 0;
-	if (ac > 1)
-	{
-		while(av[i])
-		{
-			printf("%d, ", av[i]);
-			i++;
-		}
-		printf("\n");
-	}
+	char			**args;
+	t_program_data	pd;
+
+	
 	return (0);
 }

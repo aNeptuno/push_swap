@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 15:20:23 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 14:26:37 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:30:39 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,20 @@ static void	set_a_targets(t_node *node, t_stack *stack)
 	current_b = stack->top;
 	while (current_a)
 	{
-		//printf("current a: %d\n",current_a->data);
 		current_b = stack->top;
 		while (current_b)
 		{
-			//printf("--> current_b->data = %d\n", current_b->data);
 			if (current_b->data < current_a->data)
 			{
 				if (current_a->target == NULL)
-				{
-					//printf("--> current a no tiene target, le asigno el valor de current b\n");
 					current_a->target = current_b;
-				}
 				else if (current_b->data > current_a->target->data)
-				{
-					//printf("entro a elseif: hay target, pero mi nuevo valor es mayor que el target (y menor que current a)\n");
 					current_a->target = current_b;
-				}
 			}
 			current_b = current_b->next;
 		}
 		if (current_a->target == NULL)
-		{
-			//printf("entra a no target dsp de while\n");
 			current_a->target = find_biggest(stack);
-		}
-		//printf("a node: %d | target b node: %d\n", current_a->data, current_a->target->data);
 		current_a = current_a->next;
 	}
 }
@@ -83,31 +71,22 @@ static void	set_push_cost(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-/// @brief sets 1 to the cheapest node and 0 to the rest
+/// @brief sets 1 to the cheapest node
 /// @param node top node of a stack 
 static void	set_cheapest(t_node *node)
 {
 	t_node	*current;
-	t_node	*min_node;
-	int		min_cost;
+	t_node	*cheapest;
 
-	min_node = node;
-	min_cost = min_node->push_cost;
-	min_node->cheapest = 1;
-	current = min_node->next;
-	if (current == NULL)
-		return ;
+	current = node;
+	cheapest = node;
 	while (current)
 	{
-		current->cheapest = 0;
-		if (current->push_cost < min_cost)
-		{
-			min_node->cheapest = 0;
-			current->cheapest = 1;
-			min_node = current;
-		}
+		if (current->push_cost < cheapest->push_cost)
+			cheapest = current;
 		current = current->next;
 	}
+	cheapest->cheapest = 1;
 }
 
 /// @brief Initialize indexes, median, targets, push cost and cheapest nodes

@@ -6,12 +6,14 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:42:30 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 15:08:56 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:31:24 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief Set indexes of stack, also set cheapest as 0
+/// @param reset_target set all nodes target to NULL
 void	set_indexes(t_stack *stack, int reset_target)
 {
 	t_node	*current;
@@ -22,8 +24,9 @@ void	set_indexes(t_stack *stack, int reset_target)
 	while (current)
 	{
 		current->index = i;
+		current->cheapest = 0;
 		i++;
-		if (reset_target && current->target != NULL)
+		if (reset_target)
 			current->target = NULL;
 		current = current->next;
 	}
@@ -58,12 +61,14 @@ void	set_b_targets(t_node *b_node, t_stack *stack_a)
 	current_a = stack_a->top;
 	while (current_b)
 	{
+		current_a = stack_a->top;
+		current_b->target = NULL;
 		while (current_a)
 		{
 			if (current_a->data > current_b->data)
 			{
 				if (current_b->target == NULL)
-					current_b->target = current_b;
+					current_b->target = current_a;
 				else if (current_a->data < current_b->target->data)
 					current_b->target = current_a;
 			}
@@ -75,7 +80,8 @@ void	set_b_targets(t_node *b_node, t_stack *stack_a)
 	}
 }
 
-void	rr_or_rrr_reset_index(t_stack *stack_a, t_stack *stack_b, t_program_data *pd, t_node *cheapest)
+void	rr_or_rrr_reset_index(t_stack *stack_a,
+			t_stack *stack_b, t_program_data *pd, t_node *cheapest)
 {
 	if (cheapest->index <= stack_a->median
 		&& cheapest->target->index <= stack_b->median)
