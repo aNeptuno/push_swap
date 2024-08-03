@@ -6,11 +6,12 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/08/02 15:35:27 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/03 14:31:56 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+LIB = push_swap.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -O2
 HEADERS = -I ./includes
@@ -48,6 +49,19 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
+# # # # # BONUS # # # # #
+LIB = push_swap.a
+
+all_bonus: $(LIB)
+	$(LIB): $(OBJS)
+	ar rcs $@ $(OBJS)
+
+fclean_bonus: clean_bonus
+	rm -f $(LIB)
+
+re_bonus: fclean_bonus all_bonus
+# # # # # # # # # # # # #
+
 all: $(NAME)
 
 clean:
@@ -55,7 +69,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(LIB)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re all_bonus fclean_bonus re_bonus
