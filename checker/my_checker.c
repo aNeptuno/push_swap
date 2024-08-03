@@ -6,11 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:10:17 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/03 14:22:01 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/03 14:42:26 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "my_checker.h"
 
 void	init_data(t_program_data *pd)
 {

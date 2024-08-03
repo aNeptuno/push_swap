@@ -6,12 +6,13 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/08/03 14:31:56 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/03 14:47:49 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-LIB = push_swap.a
+LIB = push_swap.a 
+LIB_FLAGS = ar rcs
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -O2
 HEADERS = -I ./includes
@@ -43,34 +44,33 @@ SRC_FILES = $(LIBFT_DIR)/ft_split.c \
 # OBJECT FILES
 OBJS = $(SRC_FILES:.c=.o)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME):  $(LIB)
+	$(CC) $(CFLAGS) $< -o $@
+	@echo $(GREEN)Compilation of [$(NAME)] is successful 🎉$(NC)
 
+$(LIB) : $(OBJS)
+	@echo $(CYAN)Building push_swap library...$(NC)
+	$(LIB_FLAGS) $(LIB) $^
+	
 %.o: %.c
+	@echo $(MAGENTA)Compiling [$<]...$(NC)
 	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
-
-# # # # # BONUS # # # # #
-LIB = push_swap.a
-
-all_bonus: $(LIB)
-	$(LIB): $(OBJS)
-	ar rcs $@ $(OBJS)
-
-fclean_bonus: clean_bonus
-	rm -f $(LIB)
-
-re_bonus: fclean_bonus all_bonus
-# # # # # # # # # # # # #
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(LIB)
+	@echo $(RED)Cleaned [$(OBJS)]$(NC)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(LIB)
+	cd ../checker && make fclean
+	@echo $(RED)Cleaned [$(NAME)]$(NC)
 
 re: fclean all
 
-.PHONY: all clean fclean re all_bonus fclean_bonus re_bonus
+bonus : 
+	cd ../checker && make
+	@echo $(GREEN)Make bonus$(NC)
+
+.PHONY: all clean fclean re bonus
