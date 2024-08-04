@@ -1,0 +1,7 @@
+ARG="4 67 3 87 23";
+
+ARG="4 67 3 87 23"; ../push_swap/push_swap $ARG | ./my_checker $ARG
+
+../push_swap/push_swap "4 67 3 87 23" | ./my_checker "4 67 3 87 23"
+
+../push_swap/push_swap 4 67 3 87 23 | ./my_checker 4 67 3 87 23

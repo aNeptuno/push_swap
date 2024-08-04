@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 20:03:58 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/07/27 21:21:59 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:29:32 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,31 @@ static void	swap(t_stack *stack)
 	stack->top->next = tmp;
 }
 
-void	sa(t_program_data *pd)
+void	sa(t_program_data *pd, int print)
 {
 	if (pd->stack_a->top->next == NULL)
 		return ;
 	swap(pd->stack_a);
-	ft_putstr("sa\n");
+	if (print)
+		ft_putstr("sa\n");
 }
 
-void	sb(t_program_data *pd)
+void	sb(t_program_data *pd, int print)
 {
 	if (pd->stack_b->top->next == NULL)
 		return ;
 	swap(pd->stack_b);
-	ft_putstr("sb\n");
+	if (print)
+		ft_putstr("sb\n");
 }
 
-void	ss(t_program_data *pd)
+void	ss(t_program_data *pd, int print)
 {
 	if (pd->stack_a->top->next == NULL
 		|| pd->stack_b->top->next == NULL)
 		return ;
 	swap(pd->stack_a);
 	swap(pd->stack_b);
-	ft_putstr("ss\n");
+	if (print)
+		ft_putstr("ss\n");
 }

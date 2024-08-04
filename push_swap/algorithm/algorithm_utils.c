@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:42:30 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/02 15:31:24 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:34:27 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ void	rr_or_rrr_reset_index(t_stack *stack_a,
 	if (cheapest->index <= stack_a->median
 		&& cheapest->target->index <= stack_b->median)
 		while (stack_a->top != cheapest && stack_b->top != cheapest->target)
-			rr(pd);
+			rr(pd, 1);
 	else if (cheapest->index > stack_a->median
 		&& cheapest->target->index > stack_b->median)
 		while (stack_a->top != cheapest && stack_b->top != cheapest->target)
-			rrr(pd);
+			rrr(pd, 1);
 	set_indexes(stack_a, 0);
 	set_indexes(stack_b, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 20:04:35 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/02 15:31:57 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:28:32 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,29 @@ static void	reverse_rotate(t_stack *stack)
 	stack->top = last;
 }
 
-void	rra(t_program_data *pd)
+void	rra(t_program_data *pd, int print)
 {
 	if (pd->stack_a->top == NULL)
 		return ;
 	if (pd->stack_a->top->next == NULL)
 		return ;
 	reverse_rotate(pd->stack_a);
-	ft_putstr("rra\n");
+	if (print)
+		ft_putstr("rra\n");
 }
 
-void	rrb(t_program_data *pd)
+void	rrb(t_program_data *pd, int print)
 {
 	if (pd->stack_b->top == NULL)
 		return ;
 	if (pd->stack_b->top->next == NULL)
 		return ;
 	reverse_rotate(pd->stack_b);
-	ft_putstr("rrb\n");
+	if (print)
+		ft_putstr("rrb\n");
 }
 
-void	rrr(t_program_data *pd)
+void	rrr(t_program_data *pd, int print)
 {
 	if (pd->stack_a->top == NULL
 		|| pd->stack_b->top == NULL)
@@ -71,5 +73,6 @@ void	rrr(t_program_data *pd)
 		return ;
 	reverse_rotate(pd->stack_a);
 	reverse_rotate(pd->stack_b);
-	ft_putstr("rrr\n");
+	if (print)
+		ft_putstr("rrr\n");
 }

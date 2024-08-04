@@ -6,7 +6,7 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/03 13:03:06 by adiban-i          #+#    #+#              #
-#    Updated: 2024/08/03 14:47:36 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/04 15:02:09 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ CUT = "\033[K"
 # RULES
 NAME = my_checker
 CC = gcc
-CFLAGS = -Wall -Wextra -O2 -g #-Werror
+CFLAGS = -Wall -Wextra -O2 -g -Werror
 HEADERS = -I.
 PUSH_SWAP_LIB = ../push_swap/push_swap.a
 
-SRCS = $(wildcard *.c)
+SRCS = my_checker.c get_next_line.c get_next_line_utils.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -6,25 +6,11 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:17:59 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/02 15:38:09 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:28:32 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	init_program_data(t_program_data *prog_data)
-{
-	prog_data->stack_a = malloc(sizeof(t_stack));
-	prog_data->stack_b = malloc(sizeof(t_stack));
-	if (prog_data->stack_a == NULL || prog_data->stack_b == NULL)
-		return ;
-	prog_data->stack_a->top = NULL;
-	prog_data->stack_b->top = NULL;
-	prog_data->stack_a->size = 0;
-	prog_data->stack_b->size = 0;
-	prog_data->valid_input = 1;
-	prog_data->input_is_string = 0;
-}
 
 int	main(int ac, char	**av)
 {

@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:28:21 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/01 13:52:23 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:32:46 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	sort_two(t_stack *stack_a, t_program_data *pd)
 {
 	if (stack_a->top->data > stack_a->top->next->data)
-		sa(pd);
+		sa(pd, 1);
 }
 
 t_node	*find_biggest(t_stack *stack)
@@ -49,10 +49,10 @@ void	small_sort(t_stack *stack_a, t_program_data *pd)
 	{
 		biggest = find_biggest(stack_a);
 		if (stack_a->top == biggest)
-			ra(pd);
+			ra(pd, 1);
 		else if (stack_a->top->next == biggest)
-			rra(pd);
+			rra(pd, 1);
 		if (stack_a->top->data > stack_a->top->next->data)
-			sa(pd);
+			sa(pd, 1);
 	}
 }

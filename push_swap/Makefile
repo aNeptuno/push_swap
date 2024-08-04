@@ -6,7 +6,7 @@
 #    By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 20:06:04 by adiban-i          #+#    #+#              #
-#    Updated: 2024/08/03 14:47:49 by adiban-i         ###   ########.fr        #
+#    Updated: 2024/08/04 13:50:49 by adiban-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ ALGO_DIR = algorithm
 SRC_FILES = $(LIBFT_DIR)/ft_split.c \
 			$(LIBFT_DIR)/libft.c \
 			$(LIBFT_DIR)/ft_atoi.c \
+			$(LIBFT_DIR)/ft_itoa.c \
 			$(SRC_DIR)/main.c \
 			$(SRC_DIR)/free_data.c \
 			$(SRC_DIR)/utils.c \

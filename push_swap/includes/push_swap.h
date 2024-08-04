@@ -6,7 +6,7 @@
 /*   By: adiban-i <adiban-i@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:20:15 by adiban-i          #+#    #+#             */
-/*   Updated: 2024/08/02 15:37:30 by adiban-i         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:28:43 by adiban-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_strlen(const char *str);
 char	**ft_split(char const *s, char c);
 long	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
+char	*ft_itoa(int n);
 
 // Free
 void	free_data(t_program_data *prog_data);
@@ -66,21 +67,22 @@ void	push(t_stack *stack, int data);
 void	pop_first(t_stack *stack);
 
 // Commands
-void	pa(t_program_data *pd, int repeat);
-void	pb(t_program_data *pd, int repeat);
-void	sa(t_program_data *pd);
-void	sb(t_program_data *pd);
-void	ss(t_program_data *pd);
-void	ra(t_program_data *pd);
-void	rb(t_program_data *pd);
-void	rr(t_program_data *pd);
-void	rra(t_program_data *pd);
-void	rrb(t_program_data *pd);
-void	rrr(t_program_data *pd);
+void	pa(t_program_data *pd, int repeat, int print);
+void	pb(t_program_data *pd, int repeat, int print);
+void	sa(t_program_data *pd, int print);
+void	sb(t_program_data *pd, int print);
+void	ss(t_program_data *pd, int print);
+void	ra(t_program_data *pd, int print);
+void	rb(t_program_data *pd, int print);
+void	rr(t_program_data *pd, int print);
+void	rra(t_program_data *pd, int print);
+void	rrb(t_program_data *pd, int print);
+void	rrr(t_program_data *pd, int print);
 
 // Utils
 void	print_stack(t_stack *s, char ch);
 int		is_stack_sorted(t_stack *stack);
+void	init_program_data(t_program_data *prog_data);
 
 // Algorithm
 t_node	*find_biggest(t_stack *stack);
