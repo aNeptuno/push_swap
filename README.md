@@ -22,26 +22,26 @@ Welcome to the `push_swap` project! 🚀 This project is a challenge from 42 Sch
 
 ## Installation 💻
 
-1. **Clone the Repository:**
+1. **Clone the Repository 🔄:**
 
     ```
     git clone https://github.com/yourusername/push_swap.git
     cd push_swap
     ```
 
-2. **Compile the Code:**
+2. **Compile the Code ⚙️:**
 
     ```
     make all
     ```
 
-3. **Run the Program:**
+3. **Run the Program 🚀:**
 
     ```
     ./push_swap [numbers]
     ```
 
-4. **BONUS (Checker):**
+4. **BONUS (Checker) ✅:**
 
     ```
     cd checker
@@ -49,16 +49,28 @@ Welcome to the `push_swap` project! 🚀 This project is a challenge from 42 Sch
     ARG=[numbers]
     ../push_swap/push_swap $ARG | ./my_checker $ARG
     ```
+    
+## How to Use the Checker 🔍
 
+The `checker` is used to verify if the stack has been correctly sorted by your `push_swap` implementation.
+
+- **If the stack is sorted correctly**, `checker` will output `OK`. ✅
+- **If the stack is not sorted correctly**, `checker` will output `KO`. ❌
+
+  
 ## Example 🔍
 
 1. **push_swap no leaks:**
 
-    Run your `push_swap` implementation and check for memory leaks using a tool like Valgrind.
+    Here’s an example of the `push_swap` output:
+
+    ![Push_swap Example](readme_img/push_swap.png)
 
 2. **checker no leaks:**
 
-    Run your `checker` implementation to validate the correctness of your sorting algorithm and check for memory leaks.
+    Here’s an example of the `checker` output:
 
-Happy coding! 🚀🎉
+    ![Checker Example](images/checker.png)
+
+## Happy coding! 🚀🎉
 
