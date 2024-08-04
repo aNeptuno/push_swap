@@ -70,7 +70,7 @@ The `checker` is used to verify if the stack has been correctly sorted by your `
 
     Here’s an example of the `checker` output:
 
-    ![Checker Example](images/checker.png)
+    ![Checker Example](readme_img/checker.png)
 
 ## Happy coding! 🚀🎉
 
